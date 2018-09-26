@@ -42,6 +42,7 @@ app.post('/api/genres', (req, res) => {
     res.send(genre);
 });
 
-app.listen(4200, () => {
-    console.log('App is listening on port 4200');
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`App is listening on port ${port}`);
 });
