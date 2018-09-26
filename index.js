@@ -3,6 +3,8 @@ const debug = require('debug')('app:startup');
 const express = require('express');
 const app = express();
 
+app.use(express.json());
+
 const genres = [
     {id: 1, name: 'Action'},
     {id: 2, name: 'Horror'},
@@ -27,6 +29,16 @@ app.delete('/api/genres/:id', (req, res) => {
 
     const index = genres.indexOf(genre);
     genres.splice(index, 1);
+    res.send(genre);
+});
+
+app.post('/api/genres', (req, res) => {
+    const genre = {
+        id: genres.length + 1,
+        name: req.body.name
+    };
+
+    genres.push(genre);
     res.send(genre);
 });
 
