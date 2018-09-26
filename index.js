@@ -10,15 +10,19 @@ const genres = [
     {id: 4, name: 'Romance'}
 ];
 
-app.get('/', (req, res) => {
+app.get('/api/genres', (req, res) => {
     res.send(genres);
 });
 
-app.get('/:id', (req, res) => {
+app.get('/api/genres/:id', (req, res) => {
     const genre = genres.find(g => g.id == req.params.id);
     if(!genre) return res.status(404).send(`No genre with ID ${id} was found`);
 
     res.send(genre);
+});
+
+app.post('/api/genres', (req, res) => {
+    
 });
 
 app.listen(4200, () => {
