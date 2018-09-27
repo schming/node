@@ -1,9 +1,15 @@
 
+const config = require('config');
 const Joi = require('joi');
 const express = require('express');
 const app = express();
 
 app.use(express.json());
+
+// Configuration
+console.log('Application Name: ' + config.get('name'));
+console.log('Mail Server: ' + config.get('mail.host'));
+console.log('Password: ' + config.get('mail.password'));
 
 const genres = [
     {id: 1, name: 'Action'},
