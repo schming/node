@@ -1,4 +1,5 @@
 
+const debug = require('debug')('app:startup');
 const config = require('config');
 const Joi = require('joi');
 const express = require('express');
@@ -6,10 +7,12 @@ const app = express();
 
 app.use(express.json());
 
+if(app.get('env') === 'development') {
 // Configuration
-console.log('Application Name: ' + config.get('name'));
-console.log('Mail Server: ' + config.get('mail.host'));
-console.log('Password: ' + config.get('mail.password'));
+    debug('Application Name: ' + config.get('name'));
+    debug('Mail Server: ' + config.get('mail.host'));
+    debug('Password: ' + config.get('mail.password'));
+}
 
 const genres = [
     {id: 1, name: 'Action'},
